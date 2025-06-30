@@ -20,11 +20,11 @@
     <h1>Le Mans School of AI</h1>
     <nav>
       <ul>
-        <li><a href="https://www.meetup.com/fr-FR/le-mans-school-of-ai/" target='_blank'>Meetup</a></li>
-        <li><a href="#agenda">Mission</a></li>
-        <li><a href="#agenda">Agenda</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#dev-friends">Nos amis devs</a></li>
+        <li><a class="link-anim" href="https://www.meetup.com/fr-FR/le-mans-school-of-ai/" target='_blank'>Meetup</a></li>
+        <li><a class="link-anim" href="#agenda">Mission</a></li>
+        <li><a class="link-anim" href="#agenda">Agenda</a></li>
+        <li><a class="link-anim" href="#contact">Contact</a></li>
+        <li><a class="link-anim" href="#dev-friends">Nos amis devs</a></li>
       </ul>
     </nav>
   </div>
@@ -32,13 +32,12 @@
     <img src="./background_img.png" alt="background">
     <div class="mission">
       <h2>Le Mans School of AI</h2>
-      <span>C'est quoi ?</span>
+      <span><strong>C'est quoi ?</strong></span>
       <p>Un groupe d'entraide pour former gratuitement les étudiants et les professionnels
         aux techniques de Machine Learning et de Deep Learning</p>
       <p><i class="fa-solid fa-calendar-days"></i> Le jeudi de 18h30 à 20h00</p>
-      <p><i class="fa-solid fa-location-pin"></i> <a href="https://goo.gl/maps/uksc122KqH1mbJ7i7">Le Mans Innovation | 57 bd Demorieux, 2ème étage</a></p>
-
-      <button><a href="https://www.meetup.com/fr-FR/le-mans-school-of-ai/" target='_blank'>Rejoins-nous sur Meetup</a></button>
+      <button class="location"><i class="fa-solid fa-location-pin"></i><a href="https://goo.gl/maps/uksc122KqH1mbJ7i7" target='_blank'> Le Mans Innovation | 57 bd Demorieux, 2ème étage</a></button><br/>
+      <button class="btn"><a href="https://www.meetup.com/fr-FR/le-mans-school-of-ai/" target='_blank'>Rejoins-nous sur Meetup</a></button>
     </div>
   </div>
 </header>
@@ -46,10 +45,10 @@
   <section id="info">
     <h2>Comment ça se passe ?</h2>
     <ul class="info">
-      <li>➡️ Nos soirées sont organisés tour à tour par les membres volontaires du groupe.</li>
-      <li>➡️ Chaque membre relaye auprès de ses réseaux, la tenue des prochains évènements.</li>
-      <li>➡️ Les algorithmes présentés sont mis à disposition dans <a href="https://github.com/lemans-schoolofai" target='_blank'>repo github du groupe</a>.</li>
-      <li>➡️ Nous utilisons la messagerie Signal pour organiser et annoncer les évènements.</li>
+      <li><i class="fa-solid fa-arrow-right"></i> Nos soirées sont organisés tour à tour par les membres volontaires du groupe.</li>
+      <li><i class="fa-solid fa-arrow-right"></i> Chaque membre relaye auprès de ses réseaux, la tenue des prochains évènements.</li>
+      <li><i class="fa-solid fa-arrow-right"></i> Les algorithmes présentés sont mis à disposition dans <a class="link-anim" href="https://github.com/lemans-schoolofai" target='_blank'>repo github du groupe</a>.</li>
+      <li><i class="fa-solid fa-arrow-right"></i> Nous utilisons la messagerie Signal pour organiser et annoncer les évènements.</li>
     </ul>
   </section>
   <section id="agenda">
@@ -58,13 +57,34 @@
   </section>
   <section id="dev-friends">
     <h2>Nos amis dev</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin, magna a vehicula tempus, turpis leo eleifend felis, vitae luctus ipsum leo eget nulla. Mauris leo lectus, tristique at interdum vel, blandit at massa. Morbi rutrum ac nulla a dictum. Donec quis purus purus. Cras maximus elementum vehicula. Aliquam aliquet lorem eget odio malesuada, vel ornare odio egestas. Cras pharetra libero id nisl dapibus hendrerit. Fusce ultricies, nisi a sodales dignissim, elit arcu interdum eros, quis tincidunt neque dolor commodo lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec feugiat lobortis eros a maximus. Duis molestie tempus ex eget elementum. Sed suscipit egestas tortor. Morbi tincidunt justo a lacinia scelerisque.</p>
+    <div class="container-dev">
+      <div class="dev-card">
+        <a href="https://www.meetup.com/fr-FR/GDG-Le-Mans/" target='_blank'>
+          <img class="logo-dev" src="https://secure.meetupstatic.com/photos/event/9/5/8/9/clean_483458281.jpeg" alt="GDG Logo">
+        </a>
+      </div>
+      <div class="dev-card">
+        <a href="https://www.meetup.com/fr-FR/Meetup-numerique-agilite-Co/" target='_blank'>
+          <img class="logo-dev" src="https://secure.meetupstatic.com/photos/event/5/e/7/6/clean_489924182.jpeg" alt="AgiLeMans Logo">
+        </a>
+      </div>
+      <div class="dev-card">
+        <a href="https://www.eventbrite.fr/o/la-ruche-numerique-un-service-cci-le-mans-sarthe-10657551269" target='_blank'>
+          <img class="logo-dev" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F125469149%2F160944896798%2F1%2Foriginal.20210208-090129?w=480&auto=format%2Ccompress&q=75&sharp=10&rect=65%2C0%2C480%2C480&s=0c9505dff33624cf8e6cc539e93a8273" alt="AgiLeMans Logo">
+        </a>
+      </div>
+      <div class="dev-card">
+        <a href="https://lemansjug.wordpress.com/" target='_blank'>
+          <img class="logo-dev" src="https://lemansjug.wordpress.com/wp-content/uploads/2022/10/jug-title.png" alt="JUG Logo">
+        </a>
+      </div>
+    </div>
   </section>
 </main>
 <footer>
   <div class="column">
     <h4>Le Mans School of AI</h4>
-    <p><a href="https://goo.gl/maps/uksc122KqH1mbJ7i7">Le Mans Innovation | 57 bd Demorieux, 2ème étage</a></p>
+    <p><a class="link-anim" href="https://goo.gl/maps/uksc122KqH1mbJ7i7">Le Mans Innovation | 57 bd Demorieux, 2ème étage</a></p>
     <p>Le jeudi de 18h30 à 20h00</p>
   </div>
   <div id="contact" class="column">
