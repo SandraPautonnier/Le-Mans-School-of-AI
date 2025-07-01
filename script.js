@@ -1,39 +1,183 @@
-window.onload = function(){
-        // Fonction pour organiser les événements
-        function organizeEvents() {
-            const today = new Date();
-            const eventsContainer = document.getElementById('events-container');
-            const pastEventsContainer = document.getElementById('past-events');
-            const nextEventContainer = document.getElementById('next-event');
-            const futureEventsContainer = document.getElementById('future-events');
-            const ideasEventsContainer = document.getElementById('ideas-events');
+  
+  // Pour ajouter un événement, voici un exemple (instructions):
+  /*{
+    title: "Titre de l'événement", <== Titre obligatoire
+    date: "2025-05-22", <== Format date : année-mois-jour ; Si pas de date mettre null et ira automatiquement dans Idées / non planifié
+    organizers: [  <== Si pas d'organisateur défini supprimer cette ligne
+      { name: "Pierre", linkedin: "https://www.linkedin.com/in/pierre-cartier/" },
+      { name: "Mustafa", linkedin: "https://www.linkedin.com/in/moustaphatsm/" } <== Si seulement un organisateur supprimer cette ligne
+    ],
+    registration: "https://www.meetup.com/le-mans-school-of-ai/events/307193854/", <== Si pas de lien d'inscription supprimer cette ligne
+    comment: "ATTENTION, aura lieu au Blue Zinc" <== Si pas decommentaire supplémentaire supprimer cette ligne <== dernier élément de l'événement pas de virgule
+  },*/ // virgule après chaque événement
 
-            const events = Array.from(eventsContainer.children);
-            let nextEvent = null;
-            let nextEventDate = null;
+  // Exemple à copier coller
+  /*{
+    title: "Titre de l'événement",
+    date: "2025-05-22",
+    organizers: [
+      { name: "Pierre", linkedin: "https://www.linkedin.com/in/pierre-cartier/" },
+      { name: "Mustafa", linkedin: "https://www.linkedin.com/in/moustaphatsm/" }
+    ],
+    registration: "https://www.meetup.com/le-mans-school-of-ai/events/307193854/",
+    comment: "ATTENTION, aura lieu au Blue Zinc"
+  },*/
 
-            events.forEach(event => {
-                const dateStr = event.innerText.match(/\d{1,2} (janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre) \d{4}/i);
-                if (dateStr) {
-                    const eventDate = new Date(dateStr[0].replace(/(\d{1,2}) (\w+) (\d{4})/, '$2 $1 $3'));
-                    if (eventDate < today) {
-                        pastEventsContainer.appendChild(event);
-                    } else if (!nextEventDate || eventDate < nextEventDate) {
-                        nextEvent = event;
-                        nextEventDate = eventDate;
-                    } else {
-                        futureEventsContainer.appendChild(event);
-                    }
-                } else {
-                    // Si la date n'est pas définie, on considère que c'est un événement non planifié
-                    ideasEventsContainer.appendChild(event);
-                }
-            });
+const events = [
+  {
+    title: "Lancement saison 8",
+    date: "2025-09-05",
+  },
+  {
+    title: "Introduction à l'IA - 1ère partie",
+    date: "2024-09-19",
+    organizers: [
+      { name: "Gaëtan", linkedin: "https://www.linkedin.com/in/gaetangottis/" }
+    ]
+  },
+  {
+    title: "Introduction à l'IA - 2nde partie",
+    date: "2024-10-03",
+    organizers: [
+      { name: "Gaëtan", linkedin: "https://www.linkedin.com/in/gaetangottis/" }
+    ]
+  },
+  {
+    title: "Brainstorming pour le sujet des 24h du code 2025",
+    date: "2024-11-14",
+  },
+  {
+    title: "RAG pour l'entreprise - 1ère partie",
+    date: "2024-11-14",
+    organizers: [
+      { name: "Pierre", linkedin: "https://www.linkedin.com/in/pierre-cartier/" }
+    ]
+  },
+  {
+    title: "RAG et GraphRAG pour l'entreprise - 2ème partie",
+    date: "2024-11-21",
+    organizers: [
+      { name: "Pierre", linkedin: "https://www.linkedin.com/in/pierre-cartier/" },
+      { name: "Mustafa", linkedin: "https://www.linkedin.com/in/moustaphatsm/" }
+    ]
+  },    
+  {
+    title: "IA et Machine Learning",
+    date: "2025-01-09",
+    organizers: [
+      { name: "Slava", linkedin: "https://www.linkedin.com/in/vyacheslav-efimov/" }
+    ],
+    comment: "Introduction à la recherche par similarité"
+  },
+  {
+    title: "Découvrir l’IA No-code avec n8n - Retour d’expérience du Shift hackathon 2025",
+    date: "2025-05-15",
+    registration: "https://www.meetup.com/le-mans-school-of-ai/events/307101750/"
+  },
+  {
+    title: "Les agents IA et function calls - Retour d’expérience des 24h code 2025",
+    date: "2025-05-22",
+    registration: "https://www.meetup.com/le-mans-school-of-ai/events/307193854/",
+    comment: "ATTENTION, aura lieu au Blue Zinc"
+  },
+  {
+    title: "Hardware et edge AI",
+    date: null,
+  },
+  {
+    title: "Intégrer l'IA dans une appli web (client side)",
+    date: null,
+  },
+  {
+    title: "Retour aux bases du Machine Learning",
+    date: null,
+  },
+  {
+    title: "Génération d'images",
+    date: null,
+  }
+];
 
-            if (nextEvent) {
-                nextEventContainer.appendChild(nextEvent);
-            }
+function renderEvents(events) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // neutraliser l'heure
+
+  const past = document.querySelector("#past-events ul");
+  const upcoming = document.querySelector("#upcoming-events ul");
+  const ideas = document.querySelector("#ideas-events ul");
+
+  // Nettoyage
+  past.innerHTML = "";
+  upcoming.innerHTML = "";
+  ideas.innerHTML = "";
+
+  events.forEach(event => {
+    const li = document.createElement("li");
+    li.classList.add("event");
+
+    let html = `<strong>${event.title}</strong>`;
+
+    if (event.date) {
+      const eventDate = new Date(event.date);
+      eventDate.setHours(0, 0, 0, 0);
+      const formattedDate = eventDate.toLocaleDateString("fr-FR", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+      html += `<br><i class="fa-solid fa-calendar"></i> Le ${formattedDate}`;
+    }
+
+    const isPast = event.date && (new Date(event.date).setHours(0,0,0,0) < new Date().setHours(0,0,0,0));
+
+    if (event.organizers && event.organizers.length > 0) {
+        html += ` -  <i class="fa-solid fa-user"></i> par `;
+
+        const organizersHTML = event.organizers.map(org => {
+        if (org.linkedin) {
+            return `<a class="link-anim" href="${org.linkedin}" target="_blank">${org.name}</a>`;
+        } else {
+            return org.name;
         }
+        }).join(" et ");
 
-        organizeEvents();
-    };
+        html += organizersHTML;
+    } 
+
+    if (event.comment) {
+      html += `<br><p class="commentaire"><i class="fa-solid fa-circle-info"></i> ${event.comment}</p>`;
+    }
+
+  if (event.registration) {
+    const btnClass = isPast ? "btn-passed" : "btn";
+    html += `<button class="${btnClass}"><a href="${event.registration}" target="_blank" style="color:inherit; text-decoration:none;">S'inscrire</a></button>`;
+  }
+
+
+    li.innerHTML = html;
+
+    if (!event.date) {
+      li.classList.add("event-idea");
+      ideas.appendChild(li);
+    } else {
+      const eventDate = new Date(event.date);
+      eventDate.setHours(0, 0, 0, 0);
+      if (eventDate < today) {
+        li.classList.add("event-past");
+        past.appendChild(li);
+      } else {
+        li.classList.add("event-upcoming");
+        upcoming.appendChild(li);
+      }
+    }
+  });
+}
+
+// Au chargement
+document.addEventListener("DOMContentLoaded", function () {
+  renderEvents(events);
+});
+
+// Mise à jour automatique toutes les heures
+setInterval(() => renderEvents(events), 60 * 60 * 1000);
+
