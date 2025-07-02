@@ -181,3 +181,21 @@ document.addEventListener("DOMContentLoaded", function () {
 // Mise à jour automatique toutes les heures
 setInterval(() => renderEvents(events), 60 * 60 * 1000);
 
+
+// Menu hamburger //
+
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("open");
+  navMenu.classList.toggle("open");
+});
+
+// Fermer le menu après clic sur un lien
+document.querySelectorAll(".nav-ul a").forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("open");
+    navMenu.classList.remove("open");
+  });
+});
