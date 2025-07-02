@@ -25,8 +25,18 @@
 
 const events = [
   {
+    title: "Titre de l'événement",
+    date: "2025-09-22",
+    organizers: [
+      { name: "Pierre", linkedin: "https://www.linkedin.com/in/pierre-cartier/" },
+      { name: "Mustafa", linkedin: "https://www.linkedin.com/in/moustaphatsm/" }
+    ],
+    registration: "https://www.meetup.com/le-mans-school-of-ai/events/307193854/",
+    comment: "Ceci est un commentaire"
+  },
+  {
     title: "Lancement saison 8",
-    date: "2025-09-05",
+    date: "2024-09-05",
   },
   {
     title: "Introduction à l'IA - 1ère partie",
