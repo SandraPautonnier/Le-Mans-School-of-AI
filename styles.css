@@ -1,21 +1,19 @@
 /* Général */
 
 :root {
-  --main-color: #FA8868;
+  --main-color: #0797B9; /* essai couleur : orange foncé #CC4E00 vert #26997B bleu #0797B9*/
   --white-color: white;
   --main-bg-color: #FFF5F0;
-  --component-color: #FFE8DF;
-  --title-color: #FA8868;
-  --grey-color: #EFF0F3;
+  --title-color: #47B6D8;
+  --component-color: #CCF0FC;
+  --component-light-color: #F2FAFD;
+  
+  
 }
 
 body,header,nav,ul,h1,h5 {
   font-family: "Raleway", sans-serif;
   margin: 0;
-}
-
-.highlight {
-  background-color: #ffeb3b; /* Couleur pour mettre en lumière le prochain événement */
 }
 
 body {
@@ -95,6 +93,12 @@ h2 {
   transform: scale(1); 
   transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
 }
+@media (min-width: 900px) {
+  .margin-space {
+    margin-top: 20px;
+  }
+}
+
 
 .btn:hover {
   transform: scale(1.1);
@@ -355,8 +359,8 @@ h3 {
   width: 100%;
 }
 .event-past {
-  background-color: var(--grey-color);
-  color: black;
+  background-color: var(--component-light-color);
+  color: var(--main-color);
 }
 .commentaire {
   margin: 0;
