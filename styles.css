@@ -360,6 +360,12 @@ h3 {
   margin: 0;
 }
 
+#agenda span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media (max-width: 870px) {
   .mobile {
   display: none;
