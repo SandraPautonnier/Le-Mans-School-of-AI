@@ -1,9 +1,9 @@
 /* Général */
 
 :root {
-  --main-color: #0797B9; /* essai couleur : orange foncé #CC4E00 vert #26997B bleu #0797B9*/
+  --main-color: #0797B9; /* essai autre couleur : orange foncé #CC4E00 vert #26997B bleu #0797B9*/
   --white-color: white;
-  --main-bg-color: #FFF5F0;
+  --main-bg-color: #FAFDFE;
   --title-color: #47B6D8;
   --component-color: #CCF0FC;
   --component-light-color: #F2FAFD;
@@ -105,13 +105,7 @@ h2 {
 }
 
 .btn-passed {
-  display: flex;
-  margin: 10px auto;
-  padding: 3px 7px;
-  background-color: var(--white-color);
-  color: black;
-  border-radius: 15px;
-  border: none;
+  display: none;
 }
 
 .btn-zoom {
